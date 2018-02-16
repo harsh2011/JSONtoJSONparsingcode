@@ -110,14 +110,14 @@ function JSONObjectParser(data, objectname){
 	var encode = "";
 	for (var key in data) {
 		var str = JSON.stringify(data[key]);
-		encode  = encode + checker(str)+' '+key+' = '+ objectname +'.'+ getchecker(str)+'("'+key+'")'+'\n';
+		encode  = encode + checker(str)+' '+key+' = '+ objectname +'.'+ getchecker(str)+'("'+key+'")'+';\n';
 		if(checkObject(str)){
 			encode = encode + JSONObjectParser(data[key],key);
 		}
 		else if(checkArray(str)){
-			encode = encode + "for (int i = 0; i < "+key+".length(); i++) {";	
+			encode = encode + "for (int i = 0; i < "+key+".length(); i++) {\n";	
 			encode = encode + JSONArrayParser(data[key],key);
-			encode = encode + "}";
+			encode = encode + "}\n";
 		}
 	}
 	return encode;
@@ -130,18 +130,18 @@ function JSONArrayParser(data, objectname){
 	var encode = "";
 
 	if(checkObject(elementstr) || checkNull(elementstr)){
-		encode = encode + checker(elementstr)+ ' '+objectname+"e = "+ objectname+'.'+getchecker(elementstr)+'(i)'+"\n";
+		encode = encode + checker(elementstr)+ ' '+objectname+"e = "+ objectname+'.'+getchecker(elementstr)+'(i)'+";\n";
 		encode = encode + JSONObjectParser(element,objectname+'e');
 	}
 	else if(checkArray(elementstr)){
-		encode = encode + checker(elementstr)+ ' '+objectname+"e = "+ objectname+'.'+getchecker(elementstr)+'(i)'+"\n";
+		encode = encode + checker(elementstr)+ ' '+objectname+"e = "+ objectname+'.'+getchecker(elementstr)+'(i)'+";\n";
 		encode = encode + JSONArrayParser(element,objectname+'e');
 	}
 	else if(checkTrue(elementstr) || checkFalse (elementstr)){
-		encode = encode + checker(elementstr)+ ' '+objectname+"e = "+ objectname+'.'+getchecker(elementstr)+'(i)'+"\n";
+		encode = encode + checker(elementstr)+ ' '+objectname+"e = "+ objectname+'.'+getchecker(elementstr)+'(i)'+";\n";
 	}
 	else {
-		encode = encode + checker(elementstr)+ ' '+objectname+"e = "+ objectname+'.'+getchecker(elementstr)+'(i)'+"\n";
+		encode = encode + checker(elementstr)+ ' '+objectname+"e = "+ objectname+'.'+getchecker(elementstr)+'(i)'+";\n";
 	}
 	return encode;
 
@@ -154,7 +154,8 @@ app.post('/convert', function(req, res) {
 
 	var jsonstr = JSON.stringify(json);
 	if(checkObject(jsonstr)){
-		encode = JSONObjectParser(json, "main")
+		encode = 'JSONObject main = new JSONObject(str) //Enter string of JSON\n';
+		encode = encode + JSONObjectParser(json, "main");
 		res.status(200).send(encode);
 	}
 	
@@ -168,15 +169,3 @@ app.listen(process.env.PORT || 3000, function(){
 });
 
 console.log("Server running on port 3000");
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,6 +1,6 @@
 {
   "name": "jsoncode",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "get json parsing code from json data",
   "main": "server.js",
   "scripts": {
