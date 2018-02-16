@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="css/style.css" type="text/css">
+    	<link href='https://fonts.googleapis.com/css?family=Karla:700,400|Roboto+Mono:400,300' rel='stylesheet' type='text/css'>
+		<style> body {padding: 0; margin: 0;} </style>
+		<script src="/init.js"></script>
+		<title>Get Your Code</title>
+		<style>
+		.button {
+  display: inline-block;
+  padding: 5px 5px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  float:top;
+
+  width: 200px;
+  height: 50px;
+  margin: 0px 20px;
+  border-radius: 0px;
+  box-shadow: 9px 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 5px 5px #666;
+  transform: translateY(4px);
+}
+
+.container{
+	margin: 20px 20px;
+	align: center;	
+}
+.col1 {
+    float: left;
+}
+.col2 {
+    float: right;
+}
+.col3 {
+    float: center;
+}
+	
+.intro {
+font-size: 15px;
+  margin: 10px 20px; 
+}
+
+	
+.heading {
+font-size: 35px;
+  margin: 10px 20px; 
+}
+		</style>
+
+		<link rel="shortcut icon" sizes="196x196" href="headphone.png">
+	</head>
+	<body>
+
+	<div id="header" class="header header-shadow">
+	    
+
+	    <div id="rightnav">
+	      <a>Author : Harsh Patel</a>
+	      <a>Version : 1.0</a>
+	    </div>
+	</div>
+	<div id="content" style="z-index: -1;">
+
+		<div id="frontpage">
+		  <!--<div id="select_drawing_wrapper"></div>-->
+
+		  <div id="scroller">
+		    <div id="intro">
+		      <div id="intro-inner">
+		        <h2 class="heading">Get your (Java) parsing code from json data</h2>
+		        <span >
+		        	<div><div class="intro">
+				      <a>Make your life Eassssssssyyyyyyy</a>
+				      </div>
+		       		<div class="intro">
+				    <a>Just put your JSONdata click "GET CODE" get your JAVAcode</a>
+				      </div></div>
+				      
+				    
+		       		
+		      	</span>
+		      </div>
+		    </div>
+		    <button onclick="myFunction()" class="button" >Get Code</button>
+			<div class="container">
+				
+<textarea rows="20" cols="60" id="input" placeholder='{"menu": {
+	"id": "file",
+	"value": "File",
+	"popup": {
+	"menuitem": [
+		{"value": "New", "onclick": "CreateNewDoc()"},
+		{"value": "Open", "onclick": "OpenDoc()"},
+		{"value": "Close", "onclick": "CloseDoc()"}
+	]
+	}
+}}'></textarea>
+<textarea rows="20" cols="60" id="output" placeholder='JSONObject menu = main.getJSONObject("menu")
+String id = menu.getString("id")
+String value = menu.getString("value")
+JSONObject popup = menu.getJSONObject("popup")
+JSONArray menuitem = popup.getJSONArray("menuitem")
+for (int i = 0; i < menuitem.length(); i++) {
+	JSONObject menuiteme = menuitem.getJSONObject(i)
+	String value = menuiteme.getString("value")
+	String onclick = menuiteme.getString("onclick")
+}'></textarea>
+			</div>
+		</div>
+	</div>
+	</body>
+</html>
