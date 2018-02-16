@@ -163,6 +163,25 @@ app.post('/convert', function(req, res) {
 
 app.use(express.static('public'));
 
+app.post('/convert', function(req, res) {
+	var json = req.body;
+
+	var jsonstr = JSON.stringify(json);
+	if(checkObject(jsonstr)){
+		encode = 'JSONObject main = new JSONObject(str) //Enter string of JSON\n';
+		encode = encode + JSONObjectParser(json, "main");
+		res.status(200).send(encode);
+	}
+	
+});
+
+app.get('/googleab3b704dcf5738fc.html',function(req,res){
+
+
+	//return canvas.html
+	res.sendFile(__dirname + '/public/googleab3b704dcf5738fc.html');
+
+});
 
 app.listen(process.env.PORT || 3000, function(){
   console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
