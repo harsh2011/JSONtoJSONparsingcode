@@ -5,7 +5,7 @@
     	<link href='https://fonts.googleapis.com/css?family=Karla:700,400|Roboto+Mono:400,300' rel='stylesheet' type='text/css'>
 		<style> body {padding: 0; margin: 0;} </style>
 		<script src="/init.js"></script>
-		<title>Get Your Code</title>
+		<title>JSON to Parsing Code</title>
 		<style>
 		.button {
   display: inline-block;
@@ -65,9 +65,12 @@ font-size: 35px;
 	</head>
 	<body>
 
-	<div id="header" class="header header-shadow">
-	    
+  <noscript>
+  <p itemprop="description">Get you JSON parsing code in JAVA from the JSON format. This is for lazy android developer who are so lazy to write parsing code while working with Web APIs</p>
+  
+</noscript>
 
+	<div id="header" class="header header-shadow">
 	    <div id="rightnav">
 	      <a>Author : Harsh Patel</a>
 	      <a>Version : 1.0.1</a>
@@ -98,7 +101,8 @@ font-size: 35px;
 		    <button onclick="myFunction()" class="button" >Get Code</button>
 			<div class="container">
 				
-<textarea rows="20" cols="60" id="input" placeholder='{"menu": {
+<textarea rows="20" cols="60" id="input" placeholder='Input format : 
+{"menu": {
 	"id": "file",
 	"value": "File",
 	"popup": {
@@ -109,7 +113,8 @@ font-size: 35px;
 	]
 	}
 }}'></textarea>
-<textarea rows="20" cols="60" id="output" placeholder='JSONObject menu = main.getJSONObject("menu")
+<textarea rows="20" cols="60" id="output" placeholder='Output format : 
+JSONObject menu = main.getJSONObject("menu")
 String id = menu.getString("id")
 String value = menu.getString("value")
 JSONObject popup = menu.getJSONObject("popup")
